@@ -19,3 +19,4 @@ Ideen:
 - Zuweisungen suchen und dann im dict checken ob vorhanden, wenn variable einzeln in zeile
   - regex ist dann \n whitespaces varname(a-Z0-9_) whitespaces \n
 - plots aufteilen? plt.clear() oder so?
+- diese Datei als README

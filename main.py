@@ -43,11 +43,4 @@ def md(file_path: str, lang: str = "python", generate_duplicates=False):
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Please provide a markdown file location.")
-    #md(sys.argv[1])
-
-import matplotlib.pyplot as plt
-for i in range(3):
-  plt.plot([1 + i, 2, 3], [1, 4, 9 - i])
-  plt.savefig("test.png")
-print("hi")
-plt.savefig("test2.png")
+    md(sys.argv[1])
