@@ -25,14 +25,12 @@ def md(file_path: str, lang: str = "python", redo=False):
     for block in blocks:
         gen_cnt += block + "```"
         if block.startswith(lang):
-            block = block[len(lang):]
+            block = "result_array_with_an_unique_name = []" + block[len(lang):]
             work_around = dict()
-            i = 0
-            while "print" in block:
-                block = block.replace("print", f"my_personal_var_{i} = ", 1)
-                i += 1
+            # smart? way of replacing each occurrence of "print" with a unique variable
+            block = block.replace("print", f"result_array_with_an_unique_name.append")
             exec(block, work_around)
-            gen_cnt += "\n> " + "  \n".join([str(work_around[f"my_personal_var_{i}"]) for i in range(i)]) + "\n"
+            gen_cnt += "\n> " + "  \n".join([str(r) for r in work_around["result_array_with_an_unique_name"]]) + "\n"
     gen_cnt = gen_cnt[:-3]
     with open(file_path, 'w') as f:
         f.write(gen_cnt)
